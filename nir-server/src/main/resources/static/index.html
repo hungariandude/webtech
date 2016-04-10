@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nagykereskedői Információs Rendszer</title>
+<script src="jquery-2.2.2.min.js"></script>
+<script src="jput.min.js"></script>
+<script src="jquery.soap.js"></script>
+<script src="nir.js"></script>
+<link rel="stylesheet" type="text/css" href="nir.css">
+</head>
+<body>
+    <h1>Nagykereskedői Információs Rendszer</h1>
+
+    <h2>Termékek:</h2>
+
+    <table jput="productsTable_template">
+        <tbody jput="productsTbody_template">
+            <tr>
+                <td>{{name}}</td>
+                <td>{{description}}</td>
+                <td>{{stockQuantity}}</td>
+                <td>{{salePrice}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table id="productsTable">
+        <thead>
+            <tr>
+                <th>Név</th>
+                <th>Leírás</th>
+                <th>Készlet (db)</th>
+                <th>Ár (HUF)</th>
+            </tr>
+        </thead>
+        <tbody id="productsTbody">
+        </tbody>
+    </table>
+
+    <h2>Vásárlás:</h2>
+
+    <div>
+        <div class="purchaseColumn1">Vevő:</div>
+        <div class="purchaseColumn2">
+            <select jput="customersSelect_template">
+                <option value="{{id}}">{{name}}</option>
+            </select> <select id="customersSelect">
+            </select>
+        </div>
+    </div>
+    <div>
+        <div class="purchaseColumn1">Termék:</div>
+        <div class="purchaseColumn2">
+            <select jput="productsSelect_template">
+                <option value="{{id}}">{{name}}</option>
+            </select> <select id="productsSelect">
+            </select>
+        </div>
+    </div>
+    <div>
+        <div class="purchaseColumn1">Darabszám:</div>
+        <div class="purchaseColumn2">
+             <input id="quantityInput" type="number" min="0" step="1"></input>
+        </div>
+    </div>
+    <button id="purchaseButton" type="button">Elküldés</button>
+
+    <h2>Értékesítések:</h2>
+
+    <table jput="salesTable_template">
+        <tbody jput="salesTbody_template">
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{quantity}}</td>
+                <td>{{price}}</td>
+                <td class="needsDateFormatting">{{saleDate}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table id="salesTable">
+        <thead>
+            <tr>
+                <th>Termék neve</th>
+                <th>Vevő neve</th>
+                <th>Eladott mennyiség (db)</th>
+                <th>Egységár (HUF)</th>
+                <th>Dátum</th>
+            </tr>
+        </thead>
+        <tbody id="salesTbody">
+        </tbody>
+    </table>
+
+</body>
+</html>
